@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1012717356025",
+    "project_id": "login-with-other",
+    "storage_bucket": "login-with-other.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012717356025:android:998d194b2e6505d67cb328",
+        "android_client_info": {
+          "package_name": "com.example.login_with_other"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBppEKrbZPLDMYO4O5YtnzTtWPiBzQJXbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
