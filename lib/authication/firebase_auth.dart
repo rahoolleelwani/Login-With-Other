@@ -61,6 +61,12 @@ Future<User?> login(BuildContext? context, String email, String password) async 
           context, MaterialPageRoute(builder: (context) => const LoginPage()));
   }
 
+  signOutfb(BuildContext context) async{
+     await FacebookAuth.instance.logOut();
+    Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+  }
+
   emailExist() async{
    await FirebaseFirestore.instance.collection("users").where("email", isEqualTo: user!.email).get();
   }

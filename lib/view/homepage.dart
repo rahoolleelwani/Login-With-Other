@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
             child: const Text("Sign Out"),
             onPressed: (){
               setState(() {
+                firebaseAuth().signOutfb(context);
                 firebaseAuth().signOut(context);
               });
             }, 
