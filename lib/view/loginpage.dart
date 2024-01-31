@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_with_other/authication/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'homepage.dart';
 import 'signup_page.dart';
 
@@ -65,6 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                             if (v!.isEmpty) {
                               return "Please Enter Your Email";
                             }
+                            // if(firebaseAuth().em){
+
+                            // }
                             return null;
                           },
                         ),
@@ -99,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                           validator: (v) {
                             if (v!.isEmpty) {
                               return "Please Enter Your Password";
-                            } else if (v.length < 8) {
+                            } else if (v.length < 6) {
                               return "Please Enter atleast 8 Character";
                             }
                             return null;
@@ -182,22 +186,22 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {});
+                        firebaseAuth().signInWithFacebook();
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: const Padding(
+                        padding:  EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Image(
-                              image: AssetImage("images/google_logo.png"),
-                              height: 35,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                          children:  [
+                            // Image(
+                            //   image: AssetImage("images/google_logo.png"),
+                            //   height: 35,
+                            // ),
+                            // SizedBox(
+                            //   width: 10,
+                            // ),
                             Text(
-                              "Sign In With Google",
+                              "Sign In With Facebook",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -221,10 +225,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formkey.currentState!.validate()) {
       setState(() {
         changedsetting = true;
-      firebaseAuth().login(emailController.text, passController.text).then((value) {
-        Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Home()));
-      });
+      firebaseAuth().login(context, emailController.text, passController.text);
         changedsetting = false;
       });
     }
